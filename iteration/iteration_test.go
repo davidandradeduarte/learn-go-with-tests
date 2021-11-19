@@ -1,6 +1,7 @@
 package iteration
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -10,11 +11,11 @@ func BenchmarkRepeat(b *testing.B) {
 	}
 }
 
-// func ExampleRepeat(t *testing.B){
-// 	sum := Repeat('a', 5)
-// 	fmt.Println(sum)
-// 	// Output: 6
-// }
+func ExampleRepeat() {
+	repeated := Repeat('a', 5)
+	fmt.Println(repeated)
+	// Output: aaaaa
+}
 
 func TestRepeat(t *testing.T) {
 	type args struct {
