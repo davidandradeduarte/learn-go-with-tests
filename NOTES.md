@@ -17,3 +17,13 @@ TDD approach:
 - Run the test, see that it fails and check if the error message is meaningful
 - Write enough code to make the test pass
 - Refactor 
+
+named return values:
+```go
+func greetingPrefix(language string) (prefix string) {
+    prefix = "something"
+    return
+}
+```
+prefix is already declared and return (without a variable) can be called
+
