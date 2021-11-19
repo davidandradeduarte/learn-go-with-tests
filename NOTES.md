@@ -11,3 +11,9 @@ Writing a test is just like writing a function, with a few rules
 
 `t.Helper()` is needed to tell the test suite that this method is a helper. By doing this when it fails the line number reported will be in our function call rather than inside our test helper.`
 
+TDD approach:
+- Write a test
+- Make the compiler pass
+- Run the test, see that it fails and check if the error message is meaningful
+- Write enough code to make the test pass
+- Refactor 
