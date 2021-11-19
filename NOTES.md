@@ -1,0 +1,13 @@
+# Notes
+
+Writing a test is just like writing a function, with a few rules
+- It needs to be in a file with a name like xxx_test.go
+- The test function must start with the word Test
+- The test function takes one argument only t *testing.T
+
+`go doc <symbol>` to get documentation about a package, function, or any other symbol in std lib or our own code
+
+`t.Run` inside a test to execute subtests
+
+`t.Helper()` is needed to tell the test suite that this method is a helper. By doing this when it fails the line number reported will be in our function call rather than inside our test helper.`
+
