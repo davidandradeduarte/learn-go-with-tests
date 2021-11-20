@@ -29,3 +29,5 @@ prefix is already declared and return (without a variable) can be called
 
 publish documentation and examples to pkg.go.dev with a public available godoc instance
 `godoc -http=:6060 and navigate to http://localhost:6060/pkg/`
+
+`%.2f` fmt format for two decimal places in a floating point
