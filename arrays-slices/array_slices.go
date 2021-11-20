@@ -15,3 +15,23 @@ func SumSlice(numbers []int) int {
 	}
 	return sum
 }
+
+func SumAll(slices ...[]int) (sums []int) {
+	sums = make([]int, 0, len(slices))
+	for _, v := range slices {
+		sums = append(sums, SumSlice(v))
+	}
+	return
+}
+
+func SumAllTails(slices ...[]int) (sums []int) {
+	sums = make([]int, 0, len(slices))
+	for _, v := range slices {
+		if len(v) == 0 {
+			sums = append(sums, 0)
+			continue
+		}
+		sums = append(sums, SumSlice(v[1:]))
+	}
+	return
+}
