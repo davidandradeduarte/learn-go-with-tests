@@ -31,3 +31,6 @@ publish documentation and examples to pkg.go.dev with a public available godoc i
 `godoc -http=:6060 and navigate to http://localhost:6060/pkg/`
 
 `%.2f` fmt format for two decimal places in a floating point
+
+
+`errcheck`(go get -u github.com/kisielk/errcheck) for unchecked errors
