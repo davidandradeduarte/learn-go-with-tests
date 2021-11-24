@@ -34,3 +34,11 @@ publish documentation and examples to pkg.go.dev with a public available godoc i
 
 
 `errcheck`(go get -u github.com/kisielk/errcheck) for unchecked errors
+
+maps can only hold comparable types has keys. see https://go.dev/ref/spec#Comparison_operators
+
+maps are always pointers, even when they are passed by value (https://dave.cheney.net/2017/04/30/if-a-map-isnt-a-reference-variable-what-is-it). this means we need to be careful when changing a map between functions
+
+maps can be `nil`. adding to it causes runtime panic. reading it will return empty map
+
+writing to an existing key will override its value
