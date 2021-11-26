@@ -42,3 +42,6 @@ maps are always pointers, even when they are passed by value (https://dave.chene
 maps can be `nil`. adding to it causes runtime panic. reading it will return empty map
 
 writing to an existing key will override its value
+
+very interesting that since we have full control over a mock struct, we are able to assert how many times a method has been called (a struct count field for example). See count [countdown.go](mocking/countdown.go)
+
