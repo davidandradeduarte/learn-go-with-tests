@@ -43,5 +43,10 @@ maps can be `nil`. adding to it causes runtime panic. reading it will return emp
 
 writing to an existing key will override its value
 
-very interesting that since we have full control over a mock struct, we are able to assert how many times a method has been called (a struct count field for example). See count [countdown.go](mocking/countdown.go)
+very interesting that since we have full control over a mock struct, we are able to assert how many times a method has been called (a struct count field for example). See [countdown.go](mocking/countdown.go)
 
+**race condition**: output is dependent on the timing and sequence of events that we have no control over. https://en.wikipedia.org/wiki/Race_condition
+
+go's builtin race detector: https://go.dev/blog/race-detector
+
+structs can have anonymous fields (cool when we don't know what name to give to bold see [concurrency.go](concurrency/concurrency.go) `result` struct
