@@ -53,4 +53,4 @@ structs can have anonymous fields (cool when we don't know what name to give to 
 
 at the time of writing, go supports any type (similar to the generic type) with the type `interface {}` (empty interface). cons: we lose type safety
 
-sync.Mutex zero value is an unlocked mutex
+`sync.Mutex` zero value is an unlocked mutex
