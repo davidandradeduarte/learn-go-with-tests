@@ -54,3 +54,12 @@ structs can have anonymous fields (cool when we don't know what name to give to 
 at the time of writing, go supports any type (similar to the generic type) with the type `interface {}` (empty interface). cons: we lose type safety
 
 `sync.Mutex` zero value is an unlocked mutex
+
+Go provides a templating engine with `text/template` and `html/template`, very similar to [Mustache](https://mustache.github.io/) syntax.
+
+We can embed files (e.g. templates) in a go executable using the `embed` package and its annotations.
+
+channels are nil until we initialize them with `make`
+
+When reading from a closed channel we get the default channel type value (e.g reading from a closed `chan int` will return 0)
+
