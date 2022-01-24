@@ -2,12 +2,13 @@ package blogrender
 
 import (
 	"bytes"
+	"io"
 	"testing"
 
 	approvals "github.com/approvals/go-approval-tests"
 )
 
-func TestRender(t *testing.T) {
+func BenchmarkRender(b *testing.B) {
 	post := &Post{
 		Title:       "title",
 		Body:        "body",
@@ -15,9 +16,34 @@ func TestRender(t *testing.T) {
 		Tags:        []string{"t1", "t2"},
 	}
 
+	postRenderer, err := NewPostRenderer()
+	if err != nil {
+		b.Fatal(err)
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		postRenderer.Render(io.Discard, post)
+	}
+}
+
+func TestRender(t *testing.T) {
+	post := &Post{
+		Title: "title",
+		Body: `# header
+**bold word**
+[google](https://www.google.com)`,
+		Description: "desc",
+		Tags:        []string{"t1", "t2"},
+	}
+
+	postRenderer, err := NewPostRenderer()
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	t.Run("converts post into html", func(t *testing.T) {
 		buf := bytes.Buffer{}
-		err := Render(&buf, post)
+		err := postRenderer.Render(&buf, post)
 		if err != nil {
 			t.Fatal(err)
 		}

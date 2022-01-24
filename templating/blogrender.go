@@ -4,11 +4,13 @@ import (
 	"embed"
 	"html/template"
 	"io"
+
+	"github.com/gomarkdown/markdown"
 )
 
 var (
 	//go:embed "templates/*"
-	posTemplates embed.FS
+	postTemplates embed.FS
 )
 
 // const (
@@ -20,28 +22,29 @@ type Post struct {
 	Tags                     []string
 }
 
-func Render(w io.Writer, p *Post) error {
-	// templ, err := template.New("blog").Parse(postTemplate)
-	templ, err := template.ParseFS(posTemplates, "templates/*.gohtml")
+type PostRenderer struct {
+	templ *template.Template
+}
+
+func NewPostRenderer() (*PostRenderer, error) {
+	templ, err := template.ParseFS(postTemplates, "templates/*.gohtml")
 	if err != nil {
+		return nil, err
+	}
+	return &PostRenderer{templ: templ}, nil
+}
+
+func (r *PostRenderer) Render(w io.Writer, p *Post) error {
+	if err := r.templ.Execute(w, &struct {
+		Title, Body, Description string
+		Tags                     []string
+	}{
+		Title:       p.Title,
+		Body:        string(markdown.ToHTML([]byte(p.Body), nil, nil)), // we could remove scaped html
+		Description: p.Description,
+		Tags:        p.Tags,
+	}); err != nil {
 		return err
 	}
-
-	if err := templ.Execute(w, p); err != nil {
-		return err
-	}
-
 	return nil
-	// _, err := fmt.Fprintf(w, "<h1>%s</h1><p>%s</p>Tags:<ul>", p.Title, p.Description)
-	// if err != nil {
-	// 	return err
-	// }
-	// for _, t := range p.Tags {
-	// 	_, err = fmt.Fprintf(w, "<li>%s</li>", t)
-	// 	if err != nil {
-	// 		return err
-	// 	}
-	// }
-	// _, err = fmt.Fprint(w, "</ul>")
-	// return err
 }
