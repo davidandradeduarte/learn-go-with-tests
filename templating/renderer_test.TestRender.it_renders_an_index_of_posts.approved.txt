@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,23 +18,13 @@
 </nav>
 <main>
 
-<h1>title</h1>
-
-<p>desc</p>
-
-&lt;h1&gt;header&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;bold word&lt;/strong&gt;
-&lt;a href=&#34;https://www.google.com&#34;&gt;google&lt;/a&gt;&lt;/p&gt;
-
-
-Tags: <ul><li>t1</li><li>t2</li></ul>
+<ol><li><a href="/post/hello-world">Hello World</a></li><li><a href="/post/hello-world-2">Hello World 2</a></li></ol>
 
 </main>
 <footer>
     <ul>
-        <li><a href="https://twitter.com/davidnduarte">Twitter</a></li>
-        <li><a href="https://github.com/davidandradeduarte">GitHub</a></li>
+        <li><a href="https://twitter.com/quii">Twitter</a></li>
+        <li><a href="https://github.com/quii">GitHub</a></li>
     </ul>
 </footer>
 </body>

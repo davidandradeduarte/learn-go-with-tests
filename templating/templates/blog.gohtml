@@ -3,7 +3,6 @@
 
 <p>{{.Description}}</p>
 
-{{.Body}}
-
 Tags: <ul>{{range .Tags}}<li>{{.}}</li>{{end}}</ul>
+{{.HTMLBody}}
 {{template "bottom" .}}
